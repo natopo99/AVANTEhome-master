@@ -1,0 +1,36 @@
+{% load static %}
+{% block content %}
+<div class = "container">
+    <div class = "text-left">
+        <h2 class = "section-heading text-uppercase">Listing Details</h2>
+    </div>
+    <br>
+    <p>Price: ${{record.price}} </p>
+
+    <p> Square Feet: {{record.square_ft}} </p>
+
+    <p>Number of Bedrooms: {{record.beds}}</p>
+
+    <p>Number of Bathrooms: {{record.baths}}</p>
+  
+    <p>Number of Garage Spaces: {{record.garage_spaces}}</p>
+ 
+    <p>Street Address: {{record.street_address}}</p>
+
+    <p>City: {{record.city}}</p>
+
+    <p>State: {{record.state}}</p>
+
+    <p>Lot Size: {{record.lot_size}} </p>
+
+    <p>Year Built: {{record.year_built}} </p>
+
+    <p>Days Listed: {{record.days_listed}}</p>
+
+    <form class = '' method = 'POST' action = "{% url 'listings' %}">
+        {%csrf_token%}
+        <button class="btn btn-primary" type = 'submit' >Return to Listings</button>
+    </form> 
+    
+{% endblock %}
+

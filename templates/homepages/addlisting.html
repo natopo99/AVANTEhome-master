@@ -1,0 +1,62 @@
+{% load static %}
+{% block content %}
+<div class = "container">
+    <div class = "text-left">
+        <h2 class = "section-heading text-uppercase">Add Listing</h2>
+    </div>
+    <br>
+    <form name="form" method="post" action="{% url 'addListing' %}">
+        {% csrf_token %}
+        <label for = 'price'>Price:</label>
+        <input type = "text" name = 'price' id= 'price' autofocus>
+        <br><br>
+
+        <label for = 'square_ft'>Square Feet:</label>
+        <input type = "text" name = 'square_ft' id = 'square_ft'>
+        <br><br>
+
+        <label for ='beds'>Number of Bedrooms:</label>
+        <input type = "text" name = 'beds' id = 'beds'>
+        <br><br>
+
+        <label for ='baths'>Number of Bathrooms:</label>
+        <input type = "text" name = 'baths' id = 'baths'>
+        <br><br>
+
+        <label for ='garage_spaces'>Number of Garage Spaces:</label>
+        <input type = "text" name = 'garage_spaces' id = 'garage_spaces'>
+        <br><br>
+
+        <label for ='street_address'>Street Address:</label>
+        <input type = "text" name = 'street_address' id = 'street_address'>
+        <br><br>
+
+        <label for ='city'>City:</label>
+        <input type = "text" name = 'city' id = 'city'>
+        <br><br>
+
+        <label for ='state'>State:</label>
+        <input type = "text" name = 'state' id = 'state'>
+        <br><br>
+
+        <label for ='lot_size'>Lot Size:</label>
+        <input type = "text" name = 'lot_size' id = 'lot_size'>
+        <br><br>
+
+        <label for ='year_built'>Year Built:</label>
+        <input type = "text" name = 'year_built' id = 'year_built'>
+        <br><br>
+
+        <label for ='days_listed'>Days Listed:</label>
+        <input type = "text" name = 'days_listed' id = 'days_listed'>
+        <br><br>
+
+
+        <button type = "submit">Add</button>
+    </form>
+    <form class = '' action = "{% url 'listings' %}">
+        {%csrf_token%}
+        <button class="btn btn-primary" type = 'submit' >Back to Home</button>
+    </form> 
+{% endblock %}
+

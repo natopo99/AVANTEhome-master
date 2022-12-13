@@ -1,0 +1,52 @@
+{% load static %}
+{% block content %}
+
+<h1><b>HOUSE LIST</b></h1>
+
+<form class = '' method = 'POST' action = "{% url 'index' %}">
+    {%csrf_token%}
+    <button class="btn btn-primary" type = 'submit' >Back to Home</button>
+</form> 
+
+<form class = '' method = 'POST' action = "{% url 'searchListing' %}">
+    {%csrf_token%}
+    <input type = 'search' placeholder = 'Search listing by city...' name = 'searched'>
+    <button class="btn btn-primary" type = 'submit' >Search</button>
+</form>       
+
+<form action = "{% url 'addListing' %}">
+    {%csrf_token%}
+    <button class="btn btn-primary" type = 'submit'>Add Listing</button>
+</form>
+<br><br>
+
+<div class = "container">
+    {% for h in houses %}
+    <p>
+        <br>
+        <h4>{{ h.house_name }}</h4>
+        Square Feet: {{h.square_ft}}<br>
+        Beds: {{h.beds}}<br>
+        Baths: {{h.baths}}<br>
+        Price: ${{h.price}}<br><br>
+
+        <form class = '' action = "{% url 'viewListingView' house_id=h.id %}">
+            {%csrf_token%}
+            <button class="btn btn-primary" type = 'submit' >View</button>
+        </form> 
+
+        <form action = "{% url 'editListingView' house_id=h.id %}">
+            {%csrf_token%}
+            <button class="btn btn-primary" type = 'submit'>Edit</button>
+        </form>
+
+        <form action = "{% url 'deleteListing' house_id=h.id %}" >
+            {%csrf_token%}
+            <button class="btn btn-primary" type = 'submit'>Delete</button>
+        </form>
+        ---------------------------------------------
+
+    </p>
+    {% endfor %}
+</div>
+{% endblock %}
